@@ -1,5 +1,6 @@
 # Editor.md for Drupal
 
+- [Editor.md](https://github.com/pandao/editor.md): The open source embeddable online markdown editor (component), based on CodeMirror & jQuery & Marked.
 
 ## TODOS:
 
