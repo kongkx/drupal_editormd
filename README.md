@@ -8,7 +8,7 @@
 
 ## Notes:
 
-- the editor.md js file used in this module has been modified. `settings.toolbarHandles` take priority so that plugin can easily can hack editor.md's default behaviours easily
+- the `editor.md` js file used in this module has been modified. `settings.toolbarHandles` take priority so that plugin can hack editor.md's default behaviours easily
  
  Origin
  
