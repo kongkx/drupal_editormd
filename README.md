@@ -4,6 +4,7 @@
 ## TODOS:
 
 - Implement PluginManager like CKeditor
+- IMCE Integration
 
 ## Notes:
 
