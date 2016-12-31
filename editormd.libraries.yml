@@ -1,0 +1,33 @@
+drupal.editormd:
+  version: VERSION
+  js:
+    js/drupal.editormd.js: {}
+  css:
+    state:
+      css/drupal.editormd.css: {}
+  dependencies:
+    - editor/drupal.editor
+    - core/matchmedia
+    - editormd/editormd
+editormd:
+  version: VERSION
+  js:
+    editormd/editormd.js: {}
+  css:
+    state:
+      editormd/css/editormd.css: {}
+# flowchat:
+#   version: VERSION
+#   js:
+#     libs/flowchat.min.js: {}
+# marked:
+#   version: VERSION
+#   js:
+#     libs/marked.min.js: {}
+# codemirror:
+#   version: VERSION
+#   js:
+#     libs/codemirror/codemirror.min.js: {}
+#   css:
+#     state:
+#       libs/codemirror/codemirror.min.css: {}

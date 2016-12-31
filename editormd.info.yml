@@ -1,0 +1,8 @@
+name: Editor.md
+type: module
+description: "WYSIWYG editing for rich text fields using Markdown.md."
+package: Kongkx
+core: 8.x
+# version: VERSION
+dependencies:
+  - editor
