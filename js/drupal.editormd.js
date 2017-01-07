@@ -1,6 +1,6 @@
 (function (Drupal, debounce, editormd, $) {
   'use strict';
-  console.log(editormd);
+
   /**
    * @namespace
    */
@@ -14,7 +14,7 @@
      *   The text format for the editor.
      *ff
      * @return {bool}
-     *   Whether the call to `CKEDITOR.replace()` created an editor or not.
+     *
      */
     attach: function (element, format) {
 
@@ -30,29 +30,41 @@
       if (format.editorSettings.imageUpload) {
         format.editorSettings.toolbarHandlers = {};
         format.editorSettings.toolbarHandlers['image'] = function() {
-          console.log('drupal image');
           this.executePlugin("drupalImageDialog", "drupal-image-dialog/drupal-image-dialog");
         }
       }
 
-      var $element = jQuery(element).hide();
-      $('<div>').attr('id', element.id + '-editormd').insertAfter($element);
+      var $element = $(element).hide();
+      $('<div>').attr('id', element.id + '-editormd').attr('data-editor-for', element.id).insertAfter($element);
 
-      // Sync value
-      var onchange = function() {
-        $element.val(this.editor.find('textarea').val());
-      };
-
-      return editormd(element.id + '-editormd', Object.assign(
-        {}, { onchange: onchange, markdown: $element.val() }, format.editorSettings)
+      var instanceEditor = editormd(element.id + '-editormd', Object.assign(
+          {}, format.editorSettings, { appendMarkdown: $element.val() })
       );
 
-    },
-    onChange: function (element, callback) {
+      $element.data('editormd', instanceEditor);
+      return !!instanceEditor;
 
     },
     detach: function (element, format, trigger) {
-      $(element).show().next().remove();
+      var $element = $(element);
+      var editor = $element.data('editormd');
+      if (trigger === 'serialize') {
+        element.value = editor.getMarkdown()
+      } else {
+        $element.show();
+        editor.editor.remove();
+      }
+    },
+    onChange: function (element, callback) {
+      var editor = $(element).data('editormd');
+      if (editor) {
+        editor.on('change', debounce(function () {
+          var val = editor.getMarkdown();
+          element.value = val;
+          callback(val);
+        }, 400));
+      }
+      return !!editor;
     }
   };
 
@@ -83,7 +95,6 @@
      *   An object containing settings to be passed to the jQuery UI.
      */
     openDialog: function(editor, url, existingValues, saveCallback, dialogSettings) {
-      var $target = $('#'+editor.id);
       var editormdAjaxDialog = Drupal.ajax({
         dialogType: 'modal',
         url: url,
