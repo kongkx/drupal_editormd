@@ -52,7 +52,7 @@
 
     },
     detach: function (element, format, trigger) {
-      console.log(element);
+      $(element).show().next().remove();
     }
   };
 
