@@ -98,6 +98,7 @@ class Editormd extends EditorBase implements ContainerFactoryPluginInterface {
       'customToolbarIcons' => "",
       'width' => '100%',
       'height' => '300px',
+      'default_view' => 'pure_markdown'
     );
   }
 
@@ -152,6 +153,16 @@ class Editormd extends EditorBase implements ContainerFactoryPluginInterface {
       '#default_value' => $settings['height'],
       '#size' => 60,
       '#maxlength' => 128,
+    ];
+
+    $form['default_view'] = [
+      '#type' => 'select',
+      '#title' => $this->t('Default View'),
+      '#default_value' => $settings['default_view'],
+      '#options' => [
+        'watch_enabled' => $this->t('Watch Enabled'),
+        'pure_markdown' => $this->t('Pure Markdown'),
+      ],
     ];
 
     $form['plugin_settings'] = array(

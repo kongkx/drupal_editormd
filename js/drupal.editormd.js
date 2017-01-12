@@ -33,6 +33,9 @@
           this.executePlugin("drupalImageDialog", "drupal-image-dialog/drupal-image-dialog");
         }
       }
+      if (format.editorSettings.default_view == 'pure_markdown') {
+        format.editorSettings.watch = false;
+      }
 
       var $element = $(element).hide();
       $('<div>').attr('id', element.id + '-editormd').attr('data-editor-for', element.id).insertAfter($element);
