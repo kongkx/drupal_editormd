@@ -7,9 +7,9 @@
 - Implement PluginManager like CKeditor
 - IMCE Integration
 
-## Notes:
+## Notes: the `editor.md` js file used in this module has been modified.
 
-- the `editor.md` js file used in this module has been modified. `settings.toolbarHandles` take priority so that plugin can hack editor.md's default behaviours easily
+-  `settings.toolbarHandles` take priority so that plugin can hack editor.md's default behaviours easily
  
  Origin
  
@@ -42,3 +42,7 @@
      }
  }
  ```
+ 
+ - `onchange` event should be called, no matter whether it is in preview mode;
+ 
+ 
