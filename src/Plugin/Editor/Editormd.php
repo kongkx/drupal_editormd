@@ -129,8 +129,9 @@ class Editormd extends EditorBase implements ContainerFactoryPluginInterface {
     $form['customToolbarIcons'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Custom Toolbar JSON'),
+      '#description' => $this->t('Example: <code>["h1","h2","h3","h4","h5","h6","|","bold","del","italic","quote","|","list-ul","list-ol","hr","|","watch","preview","fullscreen","|","info"]</code>'),
       '#size' => 60,
-      '#maxlength' => 128,
+      '#maxlength' => 256,
       '#default_value' => $settings['customToolbarIcons'],
       '#state' => array(
         'visible' => array(
