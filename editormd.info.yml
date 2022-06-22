@@ -1,8 +1,9 @@
 name: Editor.md
 type: module
-description: "WYSIWYG editing for rich text fields using Markdown.md."
+description: 'WYSIWYG editing for rich text fields using Markdown.md.'
 package: Kongkx
 core: 8.x
+core_version_requirement: ^8 || ^9
 # version: VERSION
 dependencies:
   - editor
